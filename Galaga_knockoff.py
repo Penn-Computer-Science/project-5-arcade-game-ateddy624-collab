@@ -371,6 +371,264 @@ def make_capturing_enemy_sprite():
     
     return img
 
+def make_capturing_enemy_sprite_1():
+    global WIDTH, HEIGHT
+
+    pattern = [
+        "0200000000021200000000020",
+        "0520000000218120000000250",
+        "0552000000218120000002550",
+        "0555550002189812000555550",
+        "0555555555189815555555550",
+        "0055550055555555500555500",
+        "0000550500555550050550000",
+        "0000055005055505005500000",
+        "0000005550055500555000000",
+        "0000000055505055500000000",
+        "0000000005505055000000000",
+        "0000000000505050000000000",
+        "0000000000505050000000000",
+        "0000000000505050000000000",
+        "0000000005055505000000000",
+        "0000000050005000500000000",
+        "0000000055555555500000000",
+        "0000000553333333550000000",
+        "0000000538444448350000000",
+        "0000000534177714350000000",
+        "0000000000222220000000000",
+        "0000000002000002000000000",
+        "0000000002000002000000000",
+        "0000000000000000000000000",
+        "0000000000000000000000000"
+    ]
+
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+    
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "5":
+                img.put("#4285f4", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#666666", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "1":
+                img.put("#ff9900", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#1cfffa", (x,y))
+            elif pattern[y][x] == "7":
+                img.put("#c0feff", (x,y))
+            elif pattern[y][x] == "8":
+                img.put("#ffff00", (x,y))
+            elif pattern[y][x] == "9":
+                img.put("#fff2cc", (x,y))
+    
+    return img
+
+
+def make_capturing_enemy_sprite_2():
+    global WIDTH, HEIGHT
+
+    pattern = [
+        "0200000000021200000000020",
+        "0520000000218120000000250",
+        "0552000000218120000002550",
+        "0555550002189812000555550",
+        "0555555555189815555555550",
+        "0055550055555555500555500",
+        "0000550500555550050550000",
+        "0000055005055505005500000",
+        "0000005550055500555000000",
+        "0000000055505055500000000",
+        "0000000005505055000000000",
+        "0000000000505050000000000",
+        "0000000000505050000000000",
+        "0000000000505050000000000",
+        "0000000005055505000000000",
+        "0000000050005000500000000",
+        "0000000055555555500000000",
+        "0000000553333333550000000",
+        "0000000538444448350000000",
+        "0000000534177714350000000",
+        "0000000000222220000000000",
+        "0000000002000002000000000",
+        "0000000002000002000000000",
+        "0000000600000000060000000",
+        "0000000766000006670000000",
+        "0000000077666667700000000",
+        "0000000000777770000000000"
+    ]
+
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+    
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "5":
+                img.put("#4285f4", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#666666", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "1":
+                img.put("#ff9900", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#1cfffa", (x,y))
+            elif pattern[y][x] == "7":
+                img.put("#c0feff", (x,y))
+            elif pattern[y][x] == "8":
+                img.put("#ffff00", (x,y))
+            elif pattern[y][x] == "9":
+                img.put("#fff2cc", (x,y))
+    
+    return img
+
+def make_capturing_enemy_sprite_3():
+    global WIDTH, HEIGHT
+
+    pattern = [
+        "0200000000021200000000020",
+        "0520000000218120000000250",
+        "0552000000218120000002550",
+        "0555550002189812000555550",
+        "0555555555189815555555550",
+        "0055550055555555500555500",
+        "0000550500555550050550000",
+        "0000055005055505005500000",
+        "0000005550055500555000000",
+        "0000000055505055500000000",
+        "0000000005505055000000000",
+        "0000000000505050000000000",
+        "0000000000505050000000000",
+        "0000000000505050000000000",
+        "0000000005055505000000000",
+        "0000000050005000500000000",
+        "0000000055555555500000000",
+        "0000000553333333550000000",
+        "0000000538444448350000000",
+        "0000000534177714350000000",
+        "0000000000222220000000000",
+        "0000000002000002000000000",
+        "0000000002000002000000000",
+        "0000000600000000060000000",
+        "0000000766000006670000000",
+        "0000060077666667700600000",
+        "0000076000777770006700000",
+        "0000006000000000006000000",
+        "0000007600000000067000000",
+        "0000000766000006670000000",
+        "0000000077666667700000000",
+        "0000000000777770000000000"
+    ]
+
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+    
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "5":
+                img.put("#4285f4", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#666666", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "1":
+                img.put("#ff9900", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#1cfffa", (x,y))
+            elif pattern[y][x] == "7":
+                img.put("#c0feff", (x,y))
+            elif pattern[y][x] == "8":
+                img.put("#ffff00", (x,y))
+            elif pattern[y][x] == "9":
+                img.put("#fff2cc", (x,y))
+    
+    return img
+
+def make_capturing_enemy_sprite_4():
+    global WIDTH, HEIGHT
+
+    pattern = [
+        "0200000000021200000000020",
+        "0520000000218120000000250",
+        "0552000000218120000002550",
+        "0555550002189812000555550",
+        "0555555555189815555555550",
+        "0055550055555555500555500",
+        "0000550500555550050550000",
+        "0000055005055505005500000",
+        "0000005550055500555000000",
+        "0000000055505055500000000",
+        "0000000005505055000000000",
+        "0000000000505050000000000",
+        "0000000000505050000000000",
+        "0000000000505050000000000",
+        "0000000005055505000000000",
+        "0000000050005000500000000",
+        "0000000055555555500000000",
+        "0000000553333333550000000",
+        "0000000538444448350000000",
+        "0000000534177714350000000",
+        "0000000000222220000000000",
+        "0000000002000002000000000",
+        "0000000002000002000000000",
+        "0000000600000000060000000",
+        "0000000766000006670000000",
+        "0000060077666667700600000",
+        "0000076000777770006700000",
+        "0000006000000000006000000",
+        "0000007600000000067000000",
+        "0006000766000006670006000",
+        "0007600077666667700067000",
+        "0000600000777770000060000",
+        "0000760000000000000670000",
+        "0000076000000000006700000",
+        "0000006000000000006000000",
+        "0000007660000000667000000",
+        "0000000776666666770000000",
+        "0000000007777777000000000",
+        "0000000000000000000000000",
+        "0000000000000000000000000"
+    ]
+
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+    
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "5":
+                img.put("#4285f4", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#666666", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "1":
+                img.put("#ff9900", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#1cfffa", (x,y))
+            elif pattern[y][x] == "7":
+                img.put("#c0feff", (x,y))
+            elif pattern[y][x] == "8":
+                img.put("#ffff00", (x,y))
+            elif pattern[y][x] == "9":
+                img.put("#fff2cc", (x,y))
+    
+    return img
+
+
 def make_hit_capturing_enemy_sprite():
     global WIDTH, HEIGHT
 
@@ -527,6 +785,10 @@ capt_enemy_img = make_capturing_enemy_sprite()
 hit_capt_enemy_img = make_hit_capturing_enemy_sprite()
 player_laser_img = make_player_laser_sprite()
 enemy_laser_img = make_enemy_laser_sprite()
+capturing_enemy_1_img = make_capturing_enemy_sprite_1()
+capturing_enemy_2_img = make_capturing_enemy_sprite_2()
+capturing_enemy_3_img = make_capturing_enemy_sprite_3()
+capturing_enemy_4_img = make_capturing_enemy_sprite_4()
 
 player = canvas.create_image(WIDTH//2, HEIGHT-40, image = player_img, anchor="center")
 capt_player = canvas.create_image(WIDTH//2, HEIGHT-80, image = capt_player_img, anchor = "center")
@@ -536,6 +798,11 @@ capt_enemy = canvas.create_image(WIDTH//2, HEIGHT-200, image = capt_enemy_img, a
 hit_capt_enemy = canvas.create_image(WIDTH//2, HEIGHT-240, image = hit_capt_enemy_img, anchor = "center")
 play_laser = canvas.create_image(WIDTH//2, HEIGHT - 280, image = player_laser_img, anchor = "center")
 enemy_laser = canvas.create_image(WIDTH//2, HEIGHT-320, image = enemy_laser_img, anchor = "center")
+capturing_enemy_1 = canvas.create_image(WIDTH//1.5, HEIGHT-120, image = capturing_enemy_1_img, anchor = "center")
+capturing_enemy_2 = canvas.create_image(WIDTH//1.5, HEIGHT-160, image = capturing_enemy_2_img, anchor = "center")
+capturing_enemy_3 = canvas.create_image(WIDTH//1.5, HEIGHT-220, image = capturing_enemy_3_img, anchor = "center")
+capturing_enemy_4 = canvas.create_image(WIDTH//1.5, HEIGHT-280, image = capturing_enemy_4_img, anchor = "center")
+
 
 enemy_list = [capt_player_img, basic_enemy_img, shoot_enemy_img, capt_enemy_img, hit_capt_enemy_img]
 enemies = [] # a list to store our enemies
@@ -613,6 +880,11 @@ def collision(a, l):
 
     return ax1 < lx2 and ax2 > lx1 and ay1 < ly2 and ay2 > ly1 #Returns true when there is overlap
 
+def ship_capture():
+    pass
+
+def second_ship():
+    pass
 
 root.bind("<space>", shoot)
 
@@ -623,13 +895,11 @@ def blink():
     counter = 0
     current_color = canvas.itemcget(restart_text, "fill")
     if current_color == "#000000":
-        canvas.itemconfig(restart_text, fill = "black")   
-    else:
-        canvas.itemconfig(restart_text, fill = "white")
-
+        canvas.itemconfig(restart_text, fill = "#FFFFFF")   
+    elif current_color == "#FFFFFF":
+        canvas.itemconfig(restart_text, fill = "#000000")
     flashID = root.after(900, blink)
-    
-
+'''
 def game_loop():
     global alive, lasers, flashID, restart_text
 
@@ -689,7 +959,7 @@ def start():
     player = canvas.create_image(WIDTH//2, HEIGHT-40, image = player_img, anchor="center")
     game_loop()
 
-def restart(event=None):
+def restart(event):
     global alive, enemy_dx, enemies, flashID
     canvas.delete("all")
     lasers.clear()
@@ -720,5 +990,6 @@ root.bind("r", restart)
 #High Score System
 
 
-restart()
+restart(flashID)
+'''
 root.mainloop()
