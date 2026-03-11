@@ -12,6 +12,10 @@ CELL = 32
 enemy_move_speed = 4
 restart_text = "RESTART"
 flashID = None
+ax1 = 0
+ax2 = 0
+ay1 = 0
+ay2 = 0
 
 def make_player_sprite():
     global WIDTH, HEIGHT
@@ -429,7 +433,6 @@ def make_capturing_enemy_sprite_1():
     
     return img
 
-
 def make_capturing_enemy_sprite_2():
     global WIDTH, HEIGHT
 
@@ -628,7 +631,6 @@ def make_capturing_enemy_sprite_4():
     
     return img
 
-
 def make_hit_capturing_enemy_sprite():
     global WIDTH, HEIGHT
 
@@ -656,6 +658,264 @@ def make_hit_capturing_enemy_sprite():
         "0000000000333330000000000",
         "0000000003000003000000000",
         "0000000003000003000000000",
+        "0000000000000000000000000",
+        "0000000000000000000000000"
+    ]
+
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+    
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "5":
+                img.put("#351c75", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#666666", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "1":
+                img.put("#ff9900", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#1cfffa", (x,y))
+            elif pattern[y][x] == "7":
+                img.put("#c0feff", (x,y))
+            elif pattern[y][x] == "8":
+                img.put("#ffff00", (x,y))
+            elif pattern[y][x] == "9":
+                img.put("#fff2cc", (x,y))
+    
+    return img
+
+def make_hit_capturing_enemy_sprite_1():
+    global WIDTH, HEIGHT
+
+    pattern = [
+        "0200000000021200000000020",
+        "0520000000218120000000250",
+        "0552000000218120000002550",
+        "0555550002189812000555550",
+        "0655555555189815555555560",
+        "0065550055555555500555600",
+        "0000650600555550060560000",
+        "0000065006059506005600000",
+        "0000006550059500556000000",
+        "0000000065529255600000000",
+        "0000000006529256000000000",
+        "0000000000529250000000000",
+        "0000000000529250000000000",
+        "0000000000529250000000000",
+        "0000000005059505000000000",
+        "0000000050009000500000000",
+        "0000000055555555500000000",
+        "0000000552222222550000000",
+        "0000000521111111250000000",
+        "0000000521888881250000000",
+        "0000000000999990000000000",
+        "0000000005000005000000000",
+        "0000000005000005000000000",
+        "0000000000000000000000000",
+        "0000000000000000000000000"
+    ]
+
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+    
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "5":
+                img.put("#351c75", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#666666", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "1":
+                img.put("#ff9900", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#1cfffa", (x,y))
+            elif pattern[y][x] == "7":
+                img.put("#c0feff", (x,y))
+            elif pattern[y][x] == "8":
+                img.put("#ffff00", (x,y))
+            elif pattern[y][x] == "9":
+                img.put("#fff2cc", (x,y))
+    
+    return img
+
+def make_hit_capturing_enemy_sprite_2():
+    global WIDTH, HEIGHT
+
+    pattern = [
+        "0200000000021200000000020",
+        "0520000000218120000000250",
+        "0552000000218120000002550",
+        "0555550002189812000555550",
+        "0655555555189815555555560",
+        "0065550055555555500555600",
+        "0000650600555550060560000",
+        "0000065006059506005600000",
+        "0000006550059500556000000",
+        "0000000065529255600000000",
+        "0000000006529256000000000",
+        "0000000000529250000000000",
+        "0000000000529250000000000",
+        "0000000000529250000000000",
+        "0000000005059505000000000",
+        "0000000050009000500000000",
+        "0000000055555555500000000",
+        "0000000552222222550000000",
+        "0000000521111111250000000",
+        "0000000521888881250000000",
+        "0000000000999990000000000",
+        "0000000005000005000000000",
+        "0000000005000005000000000",
+        "0000000600000000060000000",
+        "0000000766000006670000000",
+        "0000000077666667700000000",
+        "0000000000777770000000000",
+        "0000000000000000000000000"
+    ]
+
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+    
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "5":
+                img.put("#351c75", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#666666", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "1":
+                img.put("#ff9900", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#1cfffa", (x,y))
+            elif pattern[y][x] == "7":
+                img.put("#c0feff", (x,y))
+            elif pattern[y][x] == "8":
+                img.put("#ffff00", (x,y))
+            elif pattern[y][x] == "9":
+                img.put("#fff2cc", (x,y))
+    
+    return img
+
+def make_hit_capturing_enemy_sprite_3():
+    global WIDTH, HEIGHT
+
+    pattern = [
+        "0200000000021200000000020",
+        "0520000000218120000000250",
+        "0552000000218120000002550",
+        "0555550002189812000555550",
+        "0655555555189815555555560",
+        "0065550055555555500555600",
+        "0000650600555550060560000",
+        "0000065006059506005600000",
+        "0000006550059500556000000",
+        "0000000065529255600000000",
+        "0000000006529256000000000",
+        "0000000000529250000000000",
+        "0000000000529250000000000",
+        "0000000000529250000000000",
+        "0000000005059505000000000",
+        "0000000050009000500000000",
+        "0000000055555555500000000",
+        "0000000552222222550000000",
+        "0000000521111111250000000",
+        "0000000521888881250000000",
+        "0000000000999990000000000",
+        "0000000005000005000000000",
+        "0000000005000005000000000",
+        "0000000600000000060000000",
+        "0000000766000006670000000",
+        "0000060077666667700600000",
+        "0000076000777770006700000",
+        "0000006000000000006000000",
+        "0000007600000000067000000",
+        "0000000766000006670000000",
+        "0000000077666667700000000",
+        "0000000000777770000000000",
+        "0000000000000000000000000"
+    ]
+
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+    
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "5":
+                img.put("#351c75", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#666666", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "1":
+                img.put("#ff9900", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#1cfffa", (x,y))
+            elif pattern[y][x] == "7":
+                img.put("#c0feff", (x,y))
+            elif pattern[y][x] == "8":
+                img.put("#ffff00", (x,y))
+            elif pattern[y][x] == "9":
+                img.put("#fff2cc", (x,y))
+    
+    return img
+
+def make_hit_capturing_enemy_sprite_4():
+    global WIDTH, HEIGHT
+
+    pattern = [
+        "0200000000021200000000020",
+        "0520000000218120000000250",
+        "0552000000218120000002550",
+        "0555550002189812000555550",
+        "0655555555189815555555560",
+        "0065550055555555500555600",
+        "0000650600555550060560000",
+        "0000065006059506005600000",
+        "0000006550059500556000000",
+        "0000000065529255600000000",
+        "0000000006529256000000000",
+        "0000000000529250000000000",
+        "0000000000529250000000000",
+        "0000000000529250000000000",
+        "0000000005059505000000000",
+        "0000000050009000500000000",
+        "0000000055555555500000000",
+        "0000000552222222550000000",
+        "0000000521111111250000000",
+        "0000000521888881250000000",
+        "0000000000999990000000000",
+        "0000000005000005000000000",
+        "0000000005000005000000000",
+        "0000000600000000060000000",
+        "0000000766000006670000000",
+        "0000060077666667700600000",
+        "0000076000777770006700000",
+        "0000006000000000006000000",
+        "0000007600000000067000000",
+        "0006000766000006670006000",
+        "0007600077666667700067000",
+        "0000600000777770000060000",
+        "0000760000000000000670000",
+        "0000076000000000006700000",
+        "0000006000000000006000000",
+        "0000007660000000667000000",
+        "0000000776666666770000000",
+        "0000000007777777000000000",
         "0000000000000000000000000",
         "0000000000000000000000000"
     ]
@@ -789,6 +1049,11 @@ capturing_enemy_1_img = make_capturing_enemy_sprite_1()
 capturing_enemy_2_img = make_capturing_enemy_sprite_2()
 capturing_enemy_3_img = make_capturing_enemy_sprite_3()
 capturing_enemy_4_img = make_capturing_enemy_sprite_4()
+hit_capturing_enemy_1_img = make_hit_capturing_enemy_sprite_1()
+hit_capturing_enemy_2_img = make_hit_capturing_enemy_sprite_2()
+hit_capturing_enemy_3_img = make_hit_capturing_enemy_sprite_3()
+hit_capturing_enemy_4_img = make_hit_capturing_enemy_sprite_4()
+
 
 player = canvas.create_image(WIDTH//2, HEIGHT-40, image = player_img, anchor="center")
 capt_player = canvas.create_image(WIDTH//2, HEIGHT-80, image = capt_player_img, anchor = "center")
@@ -802,12 +1067,17 @@ capturing_enemy_1 = canvas.create_image(WIDTH//1.5, HEIGHT-120, image = capturin
 capturing_enemy_2 = canvas.create_image(WIDTH//1.5, HEIGHT-160, image = capturing_enemy_2_img, anchor = "center")
 capturing_enemy_3 = canvas.create_image(WIDTH//1.5, HEIGHT-220, image = capturing_enemy_3_img, anchor = "center")
 capturing_enemy_4 = canvas.create_image(WIDTH//1.5, HEIGHT-280, image = capturing_enemy_4_img, anchor = "center")
+hit_capturing_enemy_1 = canvas.create_image(WIDTH//2.5, HEIGHT-120, image = hit_capturing_enemy_1_img, anchor = "center")
+hit_capturing_enemy_2 = canvas.create_image(WIDTH//2.5, HEIGHT-160, image = hit_capturing_enemy_2_img, anchor = "center")
+hit_capturing_enemy_3 = canvas.create_image(WIDTH//2.5, HEIGHT-220, image = hit_capturing_enemy_3_img, anchor = "center")
+hit_capturing_enemy_4 = canvas.create_image(WIDTH//2.5, HEIGHT-280, image = hit_capturing_enemy_4_img, anchor = "center")
 
 
 enemy_list = [capt_player_img, basic_enemy_img, shoot_enemy_img, capt_enemy_img, hit_capt_enemy_img]
 enemies = [] # a list to store our enemies
 
 def create_enemy_formation():
+    global enemies
     enemies.clear()
     start_x = 100
     start_y = 60
@@ -875,6 +1145,12 @@ def shoot(event):
     lasers.append(l)
 
 def collision(a, l):
+    """global capt_enemy, capturing_enemy_1, capturing_enemy_2, capturing_enemy_3, capturing_enemy_4
+    if a != capt_enemy and capturing_enemy_1 and capturing_enemy_2 and capturing_enemy_3 and capturing_enemy_4:
+        ax1, ay1, ax2, ay2 = canvas.bbox(a) #alien BBox
+        lx1, ly1, lx2, ly2 = canvas.bbox(l) #laser BBox
+    """
+    global ax1, ay1, ax2, ay2
     ax1, ay1, ax2, ay2 = canvas.bbox(a) #alien BBox
     lx1, ly1, lx2, ly2 = canvas.bbox(l) #laser BBox
 
@@ -899,9 +1175,11 @@ def blink():
     elif current_color == "#FFFFFF":
         canvas.itemconfig(restart_text, fill = "#000000")
     flashID = root.after(900, blink)
-'''
+
 def game_loop():
-    global alive, lasers, flashID, restart_text
+    global alive, lasers, flashID, restart_text, ax1, ax2, ay1, ay2, enemies
+    global capt_enemy, capturing_enemy_1, capturing_enemy_2, capturing_enemy_3, capturing_enemy_4
+    global hit_capt_enemy, hit_capturing_enemy_1, hit_capturing_enemy_2, hit_capturing_enemy_3, hit_capturing_enemy_4
 
     if not alive:
         canvas.delete("all")
@@ -930,13 +1208,105 @@ def game_loop():
     for l in lasers[:]:
         for e in enemies[:]:
             if collision(l, e):
-                canvas.delete(l)
-                canvas.delete(e)
-                if l in lasers:
-                    lasers.remove(l)
-                if e in enemies:
-                    enemies.remove(e)
-                break
+                if e != capt_enemy:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    break
+                elif e != capt_enemy and e != capturing_enemy_1:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    break
+                elif e != capt_enemy and capturing_enemy_1 and capturing_enemy_2:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    break
+                elif e != capt_enemy and capturing_enemy_1 and capturing_enemy_2 and capturing_enemy_3:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    break
+                elif e != capturing_enemy_4:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    break
+
+                elif e == capt_enemy:
+                    ex1, ey1, ex2, ey2 = canvas.bbox(e)
+                    x=(ex1+ex2)//2
+                    y=(ey1+ey2)//2
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                   
+                    capt_enemy = canvas.create_image(x, y, image = hit_capt_enemy_img, anchor = "center")
+                    enemies.append(capt_enemy)
+
+                elif e == capturing_enemy_1:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    x=(ax1+ax2)//2
+                    y=(ay1+ay2)//2
+                    capturing_enemy_1 = canvas.create_image(x, y, image = capturing_enemy_1_img, anchor = "center")
+                    
+                elif e== capturing_enemy_2:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    x=(ax1+ax2)//2
+                    y=(ay1+ay2)//2
+                    capturing_enemy_2 = canvas.create_image(x, y, image = capturing_enemy_2_img, anchor = "center")
+                    
+                elif e== capturing_enemy_3:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    x=(ax1+ax2)//2
+                    y=(ay1+ay2)//2
+                    capturing_enemy_3 = canvas.create_image(x, y, image = capturing_enemy_3_img, anchor = "center")
+                    
+                elif e== capturing_enemy_4:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    x=(ax1+ax2)//2
+                    y=(ay1+ay2)//2
+                    capturing_enemy_4 = canvas.create_image(x, y, image = capturing_enemy_4_img, anchor = "center")
+                    
     
     #End Game Condition
 
@@ -991,5 +1361,5 @@ root.bind("r", restart)
 
 
 restart(flashID)
-'''
+
 root.mainloop()
