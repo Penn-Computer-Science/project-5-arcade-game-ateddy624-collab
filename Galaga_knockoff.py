@@ -3,19 +3,23 @@ import tkinter as tk
 import time
 from tkinter import font
 import random
+import math
 
-WIDTH = 600
-HEIGHT = 400
-ROWS = 4
-COLS = 8
+WIDTH = 800
+HEIGHT = 900
+ROWS = 6
+COLS = 12
 CELL = 32
-enemy_move_speed = 4
+enemy_move_speed = 1.5
 restart_text = "RESTART"
 flashID = None
 ax1 = 0
 ax2 = 0
 ay1 = 0
 ay2 = 0
+stage = 0
+t=0
+running = True
 
 def make_player_sprite():
     global WIDTH, HEIGHT
@@ -1077,19 +1081,89 @@ enemy_list = [capt_player_img, basic_enemy_img, shoot_enemy_img, capt_enemy_img,
 enemies = [] # a list to store our enemies
 
 def create_enemy_formation():
-    global enemies
+    global enemies, stage
     enemies.clear()
-    start_x = 100
-    start_y = 60
-
+    start_x = WIDTH//2
+    start_y = 100
+    stage+=1
+    
+    
     for r in range(ROWS):
         for c in range (COLS):
             x = start_x + c * CELL
             y = start_y + r * CELL
+            move_enemy(x, y)
+    '''
+            if r == 1 and c <= 7 and c >= 4:
+                move_enemy(x, y)
+                e = canvas.create_image(x, y, image = capt_enemy_img, anchor = "nw")
+                enemies.append(e)
+            elif r <=3 and r >= 2 and c <= 9 and c >= 2:
+                move_enemy(x, y)
+                e = canvas.create_image(x, y, image = basic_enemy_img, anchor = "nw")
+                enemies.append(e)
+            elif r <= 5 and r >= 4:
+                move_enemy(x, y)
+                e = canvas.create_image(x, y, image = shoot_enemy_img, anchor = "nw")
+                enemies.append(e)
+    '''
 
-            e = canvas.create_image(x, y, image = random.choice(enemy_list), anchor = "nw")
 
-            enemies.append(e)
+def move_enemy(x, y):
+    global t, running
+    P0 = (50, 100)
+    P1 = (300, 200)
+    P2 = (x, y)
+
+    if not running:
+        return
+    
+    for r in range(ROWS):
+        for c in range (COLS):
+            x = P0[0] + c * CELL
+            y = P0[1] + r * CELL
+
+            if r == 1 and c <= 7 and c >= 4:
+
+                e = canvas.create_image(P0[0], P0[1], image = capt_enemy_img, anchor = "nw")
+                if t <= 1:
+                    # Base position along the Bezier curve
+                    x = (1-t)**2 * P0[0] + 2*(1-t)*t * P1[0] + t**2 * P2[0]
+                    y = (1-t)**2 * P0[1] + 2*(1-t)*t * P1[1] + t**2 * P2[1]
+
+                    canvas.coords(capt_enemy, x, y, x+20, y+20)
+
+                    t += 0.005
+                    root.after(10, move_enemy)
+                enemies.append(e)
+            elif r <=3 and r >= 2 and c <= 9 and c >= 2:
+                e = canvas.create_image(P0[0], P0[1], image = basic_enemy_img, anchor = "nw")
+                if t <= 1:
+                    # Base position along the Bezier curve
+                    x = (1-t)**2 * P0[0] + 2*(1-t)*t * P1[0] + t**2 * P2[0]
+                    y = (1-t)**2 * P0[1] + 2*(1-t)*t * P1[1] + t**2 * P2[1]
+            
+                    canvas.coords(capt_enemy, x, y, x+20, y+20)
+            
+                    t += 0.005
+                    root.after(10, move_enemy)
+                enemies.append(e)
+            elif r <= 5 and r >= 4:
+
+                e = canvas.create_image(P0[0], P0[1], image = shoot_enemy_img, anchor = "nw")
+                if t <= 1:
+                    # Base position along the Bezier curve
+                    x = (1-t)**2 * P0[0] + 2*(1-t)*t * P1[0] + t**2 * P2[0]
+                    y = (1-t)**2 * P0[1] + 2*(1-t)*t * P1[1] + t**2 * P2[1]
+            
+                    canvas.coords(capt_enemy, x, y, x+20, y+20)
+            
+                    t += 0.005
+                    root.after(10, move_enemy)
+                enemies.append(e)
+
+    
+
 
 def move_enemies():
     global enemy_dx, enemy_move_speed
@@ -1098,18 +1172,21 @@ def move_enemies():
     for e in enemies:
         x1, y1, x2, y2 = canvas.bbox(e)
         
-        if x2 >= WIDTH-10 and enemy_dx > 0:
+        if x2 >= WIDTH-150 and enemy_dx > 0:
             hit_wall = True
-        elif x1 <= 10 and enemy_dx < 0:
+        elif x1 <= 150 and enemy_dx < 0:
             hit_wall = True
 
     if hit_wall:
         enemy_dx = -enemy_dx
         for e in enemies:
-            canvas.move(e, 0, 150)
+            canvas.move(e, 0, 0)
     else:
         for e in enemies:
             canvas.move(e, enemy_dx, 0)
+
+
+
 
 def move_left(event):
     px1, py1, px2, py2 = canvas.bbox(player)
@@ -1135,7 +1212,7 @@ lasers = []
 def shoot(event):
     global play_laser
     
-    if len(lasers)>1:
+    if len(lasers)>4:
         return
         
     #BOUNDING BOXES
@@ -1145,11 +1222,6 @@ def shoot(event):
     lasers.append(l)
 
 def collision(a, l):
-    """global capt_enemy, capturing_enemy_1, capturing_enemy_2, capturing_enemy_3, capturing_enemy_4
-    if a != capt_enemy and capturing_enemy_1 and capturing_enemy_2 and capturing_enemy_3 and capturing_enemy_4:
-        ax1, ay1, ax2, ay2 = canvas.bbox(a) #alien BBox
-        lx1, ly1, lx2, ly2 = canvas.bbox(l) #laser BBox
-    """
     global ax1, ay1, ax2, ay2
     ax1, ay1, ax2, ay2 = canvas.bbox(a) #alien BBox
     lx1, ly1, lx2, ly2 = canvas.bbox(l) #laser BBox
@@ -1196,7 +1268,7 @@ def game_loop():
     #make our lasers move
 
     for l in lasers[:]: # "[:]" creates a phantom copy of the list, so that we affect the copy of a list, not the real list
-        canvas.move(l, 0, -25)
+        canvas.move(l, 0, -35)
         x1, y1, x2, y2 = canvas.bbox(l)
         if y2 < 0:
             canvas.delete(l)
@@ -1208,6 +1280,7 @@ def game_loop():
     for l in lasers[:]:
         for e in enemies[:]:
             if collision(l, e):
+                '''
                 if e != capt_enemy:
                     canvas.delete(l)
                     canvas.delete(e)
@@ -1248,8 +1321,8 @@ def game_loop():
                     if e in enemies:
                         enemies.remove(e)
                     break
-
-                elif e == capt_enemy:
+                    '''
+                if e == capt_enemy:
                     ex1, ey1, ex2, ey2 = canvas.bbox(e)
                     x=(ex1+ex2)//2
                     y=(ey1+ey2)//2
@@ -1306,6 +1379,15 @@ def game_loop():
                     x=(ax1+ax2)//2
                     y=(ay1+ay2)//2
                     capturing_enemy_4 = canvas.create_image(x, y, image = capturing_enemy_4_img, anchor = "center")
+                
+                else:
+                    canvas.delete(l)
+                    canvas.delete(e)
+                    if l in lasers:
+                        lasers.remove(l)
+                    if e in enemies:
+                        enemies.remove(e)
+                    break
                     
     
     #End Game Condition
