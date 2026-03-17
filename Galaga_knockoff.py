@@ -1092,8 +1092,9 @@ def create_enemy_formation():
         for c in range (COLS):
             x = start_x + c * CELL
             y = start_y + r * CELL
-            move_enemy(x, y)
-    '''
+            move_enemies()
+            
+    
             if r == 1 and c <= 7 and c >= 4:
                 move_enemy(x, y)
                 e = canvas.create_image(x, y, image = capt_enemy_img, anchor = "nw")
@@ -1106,7 +1107,7 @@ def create_enemy_formation():
                 move_enemy(x, y)
                 e = canvas.create_image(x, y, image = shoot_enemy_img, anchor = "nw")
                 enemies.append(e)
-    '''
+    
 
 
 def move_enemy(x, y):
@@ -1114,18 +1115,31 @@ def move_enemy(x, y):
     P0 = (50, 100)
     P1 = (300, 200)
     P2 = (x, y)
+    
 
     if not running:
         return
     
+    #e = canvas.create_image(P0[0], P0[1], image = capt_enemy_img, anchor = "nw")
+    #if t <= 1:
+    #    # Base position along the Bezier curve
+    #    x = (1-t)**2 * P0[0] + 2*(1-t)*t * P1[0] + t**2 * P2[0]
+    #    y = (1-t)**2 * P0[1] + 2*(1-t)*t * P1[1] + t**2 * P2[1]
+    #    canvas.coords(capt_enemy, x, y, x+20, y+20)
+    #    t += 0.005
+    #    root.after(10, move_enemy)
+    #enemies.append(e)
+
+    
     for r in range(ROWS):
         for c in range (COLS):
-            x = P0[0] + c * CELL
-            y = P0[1] + r * CELL
+            x = P0[0] + (c * CELL)
+            y = P0[1] + (r * CELL)
 
+            '''
             if r == 1 and c <= 7 and c >= 4:
 
-                e = canvas.create_image(P0[0], P0[1], image = capt_enemy_img, anchor = "nw")
+                #e = canvas.create_image(P0[0], P0[1], image = capt_enemy_img, anchor = "nw")
                 if t <= 1:
                     # Base position along the Bezier curve
                     x = (1-t)**2 * P0[0] + 2*(1-t)*t * P1[0] + t**2 * P2[0]
@@ -1136,8 +1150,9 @@ def move_enemy(x, y):
                     t += 0.005
                     root.after(10, move_enemy)
                 enemies.append(e)
-            elif r <=3 and r >= 2 and c <= 9 and c >= 2:
-                e = canvas.create_image(P0[0], P0[1], image = basic_enemy_img, anchor = "nw")
+            
+            if r <=3 and r >= 2 and c <= 9 and c >= 2:
+                #e = canvas.create_image(P0[0], P0[1], image = basic_enemy_img, anchor = "nw")
                 if t <= 1:
                     # Base position along the Bezier curve
                     x = (1-t)**2 * P0[0] + 2*(1-t)*t * P1[0] + t**2 * P2[0]
@@ -1148,9 +1163,9 @@ def move_enemy(x, y):
                     t += 0.005
                     root.after(10, move_enemy)
                 enemies.append(e)
-            elif r <= 5 and r >= 4:
+            if r <= 5 and r >= 4:
 
-                e = canvas.create_image(P0[0], P0[1], image = shoot_enemy_img, anchor = "nw")
+                #e = canvas.create_image(P0[0], P0[1], image = shoot_enemy_img, anchor = "nw")
                 if t <= 1:
                     # Base position along the Bezier curve
                     x = (1-t)**2 * P0[0] + 2*(1-t)*t * P1[0] + t**2 * P2[0]
@@ -1161,7 +1176,8 @@ def move_enemy(x, y):
                     t += 0.005
                     root.after(10, move_enemy)
                 enemies.append(e)
-
+            '''
+    return x, y 
     
 
 
@@ -1280,48 +1296,7 @@ def game_loop():
     for l in lasers[:]:
         for e in enemies[:]:
             if collision(l, e):
-                '''
-                if e != capt_enemy:
-                    canvas.delete(l)
-                    canvas.delete(e)
-                    if l in lasers:
-                        lasers.remove(l)
-                    if e in enemies:
-                        enemies.remove(e)
-                    break
-                elif e != capt_enemy and e != capturing_enemy_1:
-                    canvas.delete(l)
-                    canvas.delete(e)
-                    if l in lasers:
-                        lasers.remove(l)
-                    if e in enemies:
-                        enemies.remove(e)
-                    break
-                elif e != capt_enemy and capturing_enemy_1 and capturing_enemy_2:
-                    canvas.delete(l)
-                    canvas.delete(e)
-                    if l in lasers:
-                        lasers.remove(l)
-                    if e in enemies:
-                        enemies.remove(e)
-                    break
-                elif e != capt_enemy and capturing_enemy_1 and capturing_enemy_2 and capturing_enemy_3:
-                    canvas.delete(l)
-                    canvas.delete(e)
-                    if l in lasers:
-                        lasers.remove(l)
-                    if e in enemies:
-                        enemies.remove(e)
-                    break
-                elif e != capturing_enemy_4:
-                    canvas.delete(l)
-                    canvas.delete(e)
-                    if l in lasers:
-                        lasers.remove(l)
-                    if e in enemies:
-                        enemies.remove(e)
-                    break
-                    '''
+                
                 if e == capt_enemy:
                     ex1, ey1, ex2, ey2 = canvas.bbox(e)
                     x=(ex1+ex2)//2
