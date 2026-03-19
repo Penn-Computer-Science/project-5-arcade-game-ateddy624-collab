@@ -10,6 +10,9 @@ HEIGHT = 900
 ROWS = 6
 COLS = 12
 CELL = 32
+SCORE_WIDTH = 50
+SCORE_HEIGHT = SCORE_WIDTH//5
+score = 0
 enemy_move_speed = 1.5
 restart_text = "RESTART"
 flashID = None
@@ -1041,6 +1044,12 @@ root.title("Galaga")
 canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT, bg = "#000000")
 canvas.pack()
 
+label = tk.Label(root, text=score)
+label.pack()
+
+label = tk.Label(root, text=stage)
+label.pack()
+
 player_img = make_player_sprite()
 capt_player_img = make_capturted_player_sprite()
 basic_enemy_img = make_basic_enemy_sprite()
@@ -1244,11 +1253,30 @@ def collision(a, l):
 
     return ax1 < lx2 and ax2 > lx1 and ay1 < ly2 and ay2 > ly1 #Returns true when there is overlap
 
+def lose_collision(a, p):
+    global elasers
+    for el in elasers:
+        elx1, ely1, elx2, ely2 = canvas.bbox(a) #alien BBox
+        px1, py1, px2, py2 = canvas.bbox(p) #laser BBox
+
+        return px1 < elx2[el] and px2 > elx1[el] and py1 < ely2[el] and py2 > ely1[el]    #Returns true when there is overlap
+
 def ship_capture():
     pass
 
 def second_ship():
     pass
+
+elasers=[]
+
+def enemy_shoot(enemy):
+    global enemy_laser, elasers
+    a = enemy
+    ax1, ay1, ax2, ay2 = canvas.bbox(a)
+    shoot_location = (ax1+ax2)//2
+    el = canvas.create_image(shoot_location, ay1, image = enemy_laser_img, anchor = "s")
+    elasers.append(el)
+    
 
 root.bind("<space>", shoot)
 
@@ -1268,6 +1296,7 @@ def game_loop():
     global alive, lasers, flashID, restart_text, ax1, ax2, ay1, ay2, enemies
     global capt_enemy, capturing_enemy_1, capturing_enemy_2, capturing_enemy_3, capturing_enemy_4
     global hit_capt_enemy, hit_capturing_enemy_1, hit_capturing_enemy_2, hit_capturing_enemy_3, hit_capturing_enemy_4
+    global stage, score
 
     if not alive:
         canvas.delete("all")
@@ -1277,9 +1306,19 @@ def game_loop():
         canvas.tag_bind("restart_button", "<Button-1>", restart)
         return
     
+    try:
+        if enemies[0] == False:
+            print("1")
+            create_enemy_formation()
+    except IndexError:
+        create_enemy_formation()
 
     move_enemies()
     
+    if stage >=2:
+        if random.randint(1, 20) == 1:
+            enemy = random.choice(enemies)
+            enemy_shoot(enemy)
 
     #make our lasers move
 
@@ -1289,6 +1328,13 @@ def game_loop():
         if y2 < 0:
             canvas.delete(l)
             lasers.remove(l)
+    
+    for el in elasers[:]:
+        canvas.move(el, 0, 35)
+        elx1, ely1, elx2, ely2 = canvas.bbox(el)
+        if ely2 > HEIGHT:
+            canvas.delete(el)
+            elasers.remove(el)
 
     
     #Laser VS. Alien
@@ -1296,6 +1342,9 @@ def game_loop():
     for l in lasers[:]:
         for e in enemies[:]:
             if collision(l, e):
+                score+=100
+                
+                label.config(text = f"Score: {score}", font = ("Terminal", 12))
                 
                 if e == capt_enemy:
                     ex1, ey1, ex2, ey2 = canvas.bbox(e)
@@ -1363,16 +1412,15 @@ def game_loop():
                     if e in enemies:
                         enemies.remove(e)
                     break
+                continue
                     
     
     #End Game Condition
 
-    for e in enemies:
-        ex1, ey1, ex2, ey2 = canvas.bbox(e)
-        px1, py1, px2, py2 = canvas.bbox(player)
-
-        if ey2 >= py1:
-            alive = False
+    
+    lose = lose_collision(elasers, player)
+    if lose == True:
+        alive = False
     
     
     root.after(40, game_loop)
