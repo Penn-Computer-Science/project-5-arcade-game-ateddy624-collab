@@ -1255,10 +1255,20 @@ def collision(a, l):
 
 def lose_collision(a, p):
     global elasers
+    elaserx1 = []
+    elaserx2 = []
+    elasery1 = []
+    elasery2 = []
+    l=-1
     for el in elasers:
         elx1, ely1, elx2, ely2 = canvas.bbox(a) #alien BBox
         px1, py1, px2, py2 = canvas.bbox(p) #laser BBox
-
+        elaserx1.append(elx1)
+        elaserx2.append(elx2)
+        elasery1.append(ely1)
+        elasery2.append(ely2)
+        l += 1
+        return elaserx2[l] > px1 and elaserx1[l] < px2 and elasery2[l] > py1 and elasery1[l] < py2
         return px1 < elx2[el] and px2 > elx1[el] and py1 < ely2[el] and py2 > ely1[el]    #Returns true when there is overlap
 
 def ship_capture():
