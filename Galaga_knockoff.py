@@ -1269,7 +1269,7 @@ def lose_collision(a, p):
         elasery2.append(ely2)
         l += 1
         return elaserx2[l] > px1 and elaserx1[l] < px2 and elasery2[l] > py1 and elasery1[l] < py2
-        return px1 < elx2[el] and px2 > elx1[el] and py1 < ely2[el] and py2 > ely1[el]    #Returns true when there is overlap
+        
 
 def ship_capture():
     pass
@@ -1307,6 +1307,7 @@ def game_loop():
     global capt_enemy, capturing_enemy_1, capturing_enemy_2, capturing_enemy_3, capturing_enemy_4
     global hit_capt_enemy, hit_capturing_enemy_1, hit_capturing_enemy_2, hit_capturing_enemy_3, hit_capturing_enemy_4
     global stage, score
+    global elasers, player
 
     if not alive:
         canvas.delete("all")
@@ -1426,7 +1427,7 @@ def game_loop():
                     
     
     #End Game Condition
-
+    
     
     lose = lose_collision(elasers, player)
     if lose == True:
