@@ -1117,8 +1117,6 @@ def create_enemy_formation():
                 e = canvas.create_image(x, y, image = shoot_enemy_img, anchor = "nw")
                 enemies.append(e)
     
-
-
 def move_enemy(x, y):
     global t, running
     P0 = (50, 100)
@@ -1188,8 +1186,6 @@ def move_enemy(x, y):
             '''
     return x, y 
     
-
-
 def move_enemies():
     global enemy_dx, enemy_move_speed
 
@@ -1209,9 +1205,6 @@ def move_enemies():
     else:
         for e in enemies:
             canvas.move(e, enemy_dx, 0)
-
-
-
 
 def move_left(event):
     px1, py1, px2, py2 = canvas.bbox(player)
@@ -1469,8 +1462,6 @@ def restart(event):
 
 root.bind("r", restart)
 #Score System
-
-
 
 
 #High Score System
